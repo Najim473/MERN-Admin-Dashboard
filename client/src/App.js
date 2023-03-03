@@ -2,14 +2,15 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter as router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { themeSettings } from "theme";
 import Dashboard from "scenes/dashboard"
+import Layout from "scenes/layout"
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return <div className="App">
-    <router>
+    <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
@@ -19,7 +20,7 @@ function App() {
           </Route>
         </Routes>
       </ThemeProvider>
-    </router>
+    </Router>
   </div>;
 }
 
