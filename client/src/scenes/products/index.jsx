@@ -101,6 +101,8 @@ const Products = () => {
           rowGap="20px"
           columnGap="1.33%"
           sx={{
+            // This is target media div
+            // "&>div"
             "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
