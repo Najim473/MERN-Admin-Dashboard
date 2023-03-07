@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   LightModeOutlined,
   DarkModeOutlined,
@@ -6,34 +7,42 @@ import {
   SettingsOutlined,
   ArrowDropDownOutlined,
 } from "@mui/icons-material";
-import FlexBetween from "./FlexBetween";
+import FlexBetween from "components/FlexBetween";
+import { useDispatch } from "react-redux";
 import { setMode } from "state";
 import profileImage from "assets/profile.jpg";
-import { useDispatch } from "react-redux";
 import {
   AppBar,
-  Toolbar,
-  useTheme,
-  IconButton,
-  InputBase,
   Button,
   Box,
   Typography,
+  IconButton,
+  InputBase,
+  Toolbar,
   Menu,
   MenuItem,
+  useTheme,
 } from "@mui/material";
-import { useState } from "react";
+
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
-  const handleClick = (event) => setAnchorEl(event.setAnchorEl);
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+
   return (
-    <AppBar sx={{ position: "static", background: "none", boxShadodw: "none" }}>
+    <AppBar
+      sx={{
+        position: "static",
+        background: "none",
+        boxShadow: "none",
+      }}
+    >
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        {/* LEFT SIDE  */}
+        {/* LEFT SIDE */}
         <FlexBetween>
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
@@ -50,7 +59,8 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             </IconButton>
           </FlexBetween>
         </FlexBetween>
-        {/* Right Side  */}
+
+        {/* RIGHT SIDE */}
         <FlexBetween gap="1.5rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
@@ -62,6 +72,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           <IconButton>
             <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
+
           <FlexBetween>
             <Button
               onClick={handleClick}
@@ -84,6 +95,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               />
               <Box textAlign="left">
                 <Typography
+                  fontWeight="bold"
                   fontSize="0.85rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >

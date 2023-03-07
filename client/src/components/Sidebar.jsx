@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Divider,
@@ -25,27 +26,72 @@ import {
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
-  PieChartOutline,
+  PieChartOutlined,
 } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "assets/profile.jpg";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+
 const navItems = [
-  { text: "Dashboard", icon: <HomeOutlined /> },
-  { text: "Client Facing", icon: null },
-  { text: "Products", icon: <ShoppingCartOutlined /> },
-  { text: "Transactions", icon: <ReceiptLongOutlined /> },
-  { text: "Geography", icon: <PublicOutlined /> },
-  { text: "Sales", icon: null },
-  { text: "Overview", icon: <PointOfSaleOutlined /> },
-  { text: "Daily", icon: <TodayOutlined /> },
-  { text: "Monthly", icon: <CalendarMonthOutlined /> },
-  { text: "Breakdown", icon: <PieChartOutline /> },
-  { text: "Management", icon: null },
-  { text: "Admin", icon: <AdminPanelSettingsOutlined /> },
-  { text: "Performance", icon: <TrendingUpOutlined /> },
+  {
+    text: "Dashboard",
+    icon: <HomeOutlined />,
+  },
+  {
+    text: "Client Facing",
+    icon: null,
+  },
+  {
+    text: "Products",
+    icon: <ShoppingCartOutlined />,
+  },
+  {
+    text: "Customers",
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: "Transactions",
+    icon: <ReceiptLongOutlined />,
+  },
+  {
+    text: "Geography",
+    icon: <PublicOutlined />,
+  },
+  {
+    text: "Sales",
+    icon: null,
+  },
+  {
+    text: "Overview",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
+    text: "Daily",
+    icon: <TodayOutlined />,
+  },
+  {
+    text: "Monthly",
+    icon: <CalendarMonthOutlined />,
+  },
+  {
+    text: "Breakdown",
+    icon: <PieChartOutlined />,
+  },
+  {
+    text: "Management",
+    icon: null,
+  },
+  {
+    text: "Admin",
+    icon: <AdminPanelSettingsOutlined />,
+  },
+  {
+    text: "Performance",
+    icon: <TrendingUpOutlined />,
+  },
 ];
+
 const Sidebar = ({
   user,
   drawerWidth,
@@ -57,34 +103,35 @@ const Sidebar = ({
   const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
+
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
-  // console.log(user);
+
   return (
     <Box component="nav">
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
-          value="persisten"
+          variant="persistent"
           anchor="left"
           sx={{
             width: drawerWidth,
-            "&.MuiDrawer-paper": {
+            "& .MuiDrawer-paper": {
               color: theme.palette.secondary[200],
               backgroundColor: theme.palette.background.alt,
-              boxSizing: "border-box",
+              boxSixing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
             },
           }}
         >
           <Box width="100%">
-            <Box m="1.5rem 2rem 1rem 3rem">
+            <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
-                  <Typography variant="h5" fontWeight="bold">
+                  <Typography variant="h4" fontWeight="bold">
                     ECOMVISION
                   </Typography>
                 </Box>
@@ -99,15 +146,13 @@ const Sidebar = ({
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography
-                      key={text}
-                      sx={{ m: "1.5rem 0 .5rem 3rem", fontSize: "14px" }}
-                    >
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
                 }
                 const lcText = text.toLowerCase();
+
                 return (
                   <ListItem key={text} disablePadding>
                     <ListItemButton
@@ -120,7 +165,6 @@ const Sidebar = ({
                           active === lcText
                             ? theme.palette.secondary[300]
                             : "transparent",
-
                         color:
                           active === lcText
                             ? theme.palette.primary[600]
