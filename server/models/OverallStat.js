@@ -18,7 +18,7 @@ const OverallStatSchema = new mongoose.Schema(
                 data: String,
                 totalSales: Number,
                 totalUnits: Number,
-            }
+            },
         ],
         salesByCategory: {
             type: Map,
