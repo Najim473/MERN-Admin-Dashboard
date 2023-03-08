@@ -14,7 +14,8 @@ import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductState from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
-import { dataUser, dataProductStat, dataProduct, dataTransaction } from "./data/index.js";
+import OverallStat from './models/OverallStat.js'
+import { dataUser, dataProductStat, dataProduct, dataTransaction, dataOverallStat } from "./data/index.js";
 // CONFIGURATION
 dotenv.config();
 const app = express();
@@ -44,6 +45,7 @@ mongoose
         // ProductState.insertMany(dataProductStat)
         // User.insertMany(dataUser);
         // Transaction.insertMany(dataTransaction)
+        // OverallStat.insertMany(dataOverallStat)
     })
     .catch((error) => console.log(`${error} did not connect`));
 // MONGOOSE SETUP
