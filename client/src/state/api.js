@@ -32,7 +32,7 @@ export const api = createApi({
         getSales: build.query({
             query: () => "sales/sales",
             providesTags: ["Sales"]
-        })
+        }),
     }),
 });
 
