@@ -4,7 +4,7 @@ import { useGetSalesQuery } from "state/api";
 import { useMemo } from "react";
 const OverviewChart = ({ isDashboard = false, view }) => {
   const theme = useTheme();
-  const { data, isLoading } = useGetSalesQuery;
+  const { data, isLoading } = useGetSalesQuery();
   console.log("Overview", data);
 
   return <div>OverviewChart</div>;
