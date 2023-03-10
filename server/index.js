@@ -45,7 +45,7 @@ mongoose
         // ProductStat.insertMany(dataProductStat)
         // User.insertMany(dataUser);
         // Transaction.insertMany(dataTransaction)
-        // OverallStat.insertMany(dataOverallStat)
+        OverallStat.insertMany(dataOverallStat)
     })
     .catch((error) => console.log(`${error} did not connect`));
 // MONGOOSE SETUP
