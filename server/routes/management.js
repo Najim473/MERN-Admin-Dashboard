@@ -1,4 +1,8 @@
-import express from 'express'
-const router = express.Router()
+import express from "express";
+import { getAdmins } from "../controllers/management.js";
 
-export default router
+const router = express.Router();
+
+router.get("/admins", getAdmins);
+
+export default router;
